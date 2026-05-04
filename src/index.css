@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+
+  /* Warm-tinted neutrals — never pure white or black */
+  --color-paper: oklch(97.5% 0.005 80);
+  --color-paper-soft: oklch(95% 0.006 80);
+  --color-ink: oklch(15% 0.008 80);
+  --color-ink-soft: oklch(28% 0.006 80);
+  --color-ink-muted: oklch(50% 0.005 80);
+  --color-ink-faint: oklch(72% 0.004 80);
+  --color-rule: oklch(88% 0.005 80);
+
+  /* Twelve category accents — OKLCH-tuned, all in usable range */
+  --color-arts: oklch(55% 0.22 0);          /* magenta-rose */
+  --color-culture: oklch(70% 0.18 55);       /* amber-orange */
+  --color-economy: oklch(55% 0.13 155);      /* sea green */
+  --color-health: oklch(65% 0.22 25);        /* coral */
+  --color-history: oklch(45% 0.10 60);       /* sienna */
+  --color-nature: oklch(60% 0.18 140);       /* leaf */
+  --color-philosophy: oklch(40% 0.18 295);   /* indigo violet */
+  --color-politics: oklch(50% 0.22 25);      /* firebrick */
+  --color-psychology: oklch(50% 0.20 305);   /* purple */
+  --color-science: oklch(55% 0.20 250);      /* royal blue */
+  --color-society: oklch(60% 0.12 195);      /* teal */
+  --color-technology: oklch(60% 0.20 240);   /* electric blue */
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern', 'liga', 'calt', 'ss01';
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .rule {
+    height: 1px;
+    background: var(--color-rule);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Display sizes — anti-flat scale, ratio ~1.4 */
+  .display-1 {
+    font-size: clamp(3.5rem, 11vw, 11rem);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+  }
+  .display-2 {
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    font-weight: 900;
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+  }
+  .display-3 {
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+  }
+}

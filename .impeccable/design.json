@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-04T00:00:00Z",
+  "title": "Design System: Sohzo",
+  "extensions": {
+    "colorMeta": {
+      "paper":      { "role": "neutral",  "displayName": "Morning Cream",    "canonical": "oklch(97.5% 0.005 80)", "tonalRamp": ["oklch(15% 0.008 80)", "oklch(28% 0.006 80)", "oklch(40% 0.006 80)", "oklch(55% 0.005 80)", "oklch(70% 0.005 80)", "oklch(82% 0.005 80)", "oklch(91% 0.005 80)", "oklch(97.5% 0.005 80)"] },
+      "paper-soft": { "role": "neutral",  "displayName": "Soft Vellum",      "canonical": "oklch(95% 0.006 80)",  "tonalRamp": ["oklch(15% 0.008 80)", "oklch(28% 0.006 80)", "oklch(40% 0.006 80)", "oklch(55% 0.005 80)", "oklch(70% 0.005 80)", "oklch(82% 0.005 80)", "oklch(88% 0.005 80)", "oklch(95% 0.006 80)"] },
+      "ink":        { "role": "neutral",  "displayName": "Rich Charcoal",    "canonical": "oklch(15% 0.008 80)",  "tonalRamp": ["oklch(10% 0.010 80)", "oklch(15% 0.008 80)", "oklch(25% 0.007 80)", "oklch(38% 0.006 80)", "oklch(52% 0.005 80)", "oklch(68% 0.004 80)", "oklch(82% 0.004 80)", "oklch(95% 0.005 80)"] },
+      "ink-soft":   { "role": "neutral",  "displayName": "Warm Dark",        "canonical": "oklch(28% 0.006 80)",  "tonalRamp": ["oklch(10% 0.010 80)", "oklch(20% 0.008 80)", "oklch(28% 0.006 80)", "oklch(40% 0.006 80)", "oklch(56% 0.005 80)", "oklch(70% 0.004 80)", "oklch(84% 0.004 80)", "oklch(95% 0.005 80)"] },
+      "ink-muted":  { "role": "neutral",  "displayName": "Considered Grey",  "canonical": "oklch(50% 0.005 80)",  "tonalRamp": ["oklch(12% 0.008 80)", "oklch(22% 0.007 80)", "oklch(35% 0.006 80)", "oklch(50% 0.005 80)", "oklch(64% 0.005 80)", "oklch(76% 0.004 80)", "oklch(88% 0.004 80)", "oklch(96% 0.004 80)"] },
+      "ink-faint":  { "role": "neutral",  "displayName": "Whisper",          "canonical": "oklch(72% 0.004 80)",  "tonalRamp": ["oklch(12% 0.008 80)", "oklch(25% 0.006 80)", "oklch(40% 0.005 80)", "oklch(55% 0.005 80)", "oklch(72% 0.004 80)", "oklch(83% 0.004 80)", "oklch(91% 0.004 80)", "oklch(97% 0.004 80)"] },
+      "rule":       { "role": "neutral",  "displayName": "Faint Rule",       "canonical": "oklch(88% 0.005 80)",  "tonalRamp": ["oklch(15% 0.008 80)", "oklch(30% 0.007 80)", "oklch(45% 0.006 80)", "oklch(60% 0.005 80)", "oklch(74% 0.004 80)", "oklch(84% 0.004 80)", "oklch(92% 0.004 80)", "oklch(97% 0.004 80)"] }
+    },
+    "typographyMeta": {
+      "display":   { "displayName": "Display",   "purpose": "Hero headline only. One per page. Always text-balance." },
+      "display-2": { "displayName": "Display 2", "purpose": "Section headlines. One per section." },
+      "display-3": { "displayName": "Display 3", "purpose": "CTAs (download link) and card-level titles." },
+      "body":      { "displayName": "Body",      "purpose": "Primary prose. Max 65-75ch per line. text-pretty for orphan control." },
+      "label":     { "displayName": "Label",     "purpose": "Section indexes (№ 01), navigation, metadata. Always muted or faint color. Never for primary meaning." }
+    },
+    "shadows": [
+      { "name": "article-card-lift", "value": "0 1px 0 rgba(26,24,20,0.04), 0 24px 60px -28px rgba(26,24,20,0.18)", "purpose": "Used on the app article card mockup only. Wide diffuse lift with a hair of top-edge definition. Prohibited everywhere else." }
+    ],
+    "motion": [
+      { "name": "ease-house", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "The house easing. Used on all entrances, hovers, and transitions throughout." },
+      { "name": "duration-fast", "value": "400ms", "purpose": "Hover state transitions." },
+      { "name": "duration-medium", "value": "700ms–900ms", "purpose": "Component entrances." },
+      { "name": "duration-slow", "value": "1100ms–1800ms", "purpose": "Hero/diagram orchestrated sequences." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "CTA Download Link",
+      "kind": "button",
+      "refersTo": "cta-primary",
+      "description": "Primary call-to-action. Always a text link, never a <button>. display-3 scale + arrow glyph.",
+      "html": "<a href=\"#\" class=\"ds-cta\"><span class=\"ds-cta__label\">Download for iOS</span><span class=\"ds-cta__arrow\" aria-hidden=\"true\">→</span></a>",
+      "css": ".ds-cta { display: inline-flex; align-items: baseline; gap: 12px; color: oklch(15% 0.008 80); text-decoration: none; font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif; } .ds-cta__label { font-size: clamp(1.75rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.04; letter-spacing: -0.02em; } .ds-cta__arrow { font-size: 1.5rem; transform: translateY(2px); transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-cta:hover .ds-cta__arrow { transform: translateY(2px) translateX(4px); }"
+    },
+    {
+      "name": "Nav Label Link",
+      "kind": "nav",
+      "description": "Navigation links in the header. Mono uppercase label utility, muted color, transitions to ink on hover.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav__link\">Worlds</a><a href=\"#\" class=\"ds-nav__link\">Modes</a><a href=\"#\" class=\"ds-nav__link\">Plus</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 28px; } .ds-nav__link { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(50% 0.005 80); text-decoration: none; transition: color 150ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-nav__link:hover { color: oklch(15% 0.008 80); }"
+    },
+    {
+      "name": "Section Number Label",
+      "kind": "custom",
+      "description": "Editorial section index. Format: № nn — Section name. Opens every section before the headline.",
+      "html": "<p class=\"ds-section-label\">№ 01 — A daily ritual of curiosity</p>",
+      "css": ".ds-section-label { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(50% 0.005 80); margin-bottom: 2rem; }"
+    },
+    {
+      "name": "Article Card",
+      "kind": "card",
+      "refersTo": "article-card",
+      "description": "The app daily-piece mockup. Generously rounded, warm-gradient background with subtle category tint. The single component that carries a shadow.",
+      "html": "<article class=\"ds-article-card\"><div class=\"ds-article-card__header\"><div><p class=\"ds-article-card__category\" style=\"color: #c0436b\">01 — Arts</p><p class=\"ds-article-card__meta\">Today's piece</p></div><span class=\"ds-article-card__topic\">Painting</span></div><div><h3 class=\"ds-article-card__title\">The unfinished sketches of Leonardo</h3><p class=\"ds-article-card__body\">He left more half-drawings than finished works. Why incompleteness was, for him, a kind of thinking out loud.</p></div><div class=\"ds-article-card__footer\"><div class=\"ds-article-card__meta-row\"><span>4 min</span><span class=\"ds-article-card__rule\"></span><span>Painters, photographers, the look of looking.</span></div><div class=\"ds-article-card__actions\"><button class=\"ds-feedback-btn\">↑</button><button class=\"ds-feedback-btn\">↓</button></div></div></article>",
+      "css": ".ds-article-card { background: linear-gradient(155deg, oklch(95% 0.006 80) 0%, oklch(95% 0.006 80) 45%, rgba(192,67,107,0.15) 100%); border-radius: 36px; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; box-shadow: 0 1px 0 rgba(26,24,20,0.04), 0 24px 60px -28px rgba(26,24,20,0.18); font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif; min-height: 420px; } .ds-article-card__header { display: flex; align-items: flex-start; justify-content: space-between; } .ds-article-card__category { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; } .ds-article-card__meta { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(50% 0.005 80); margin-top: 4px; } .ds-article-card__topic { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(50% 0.005 80); } .ds-article-card__title { font-size: 2rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: oklch(15% 0.008 80); } .ds-article-card__body { margin-top: 1.25rem; font-size: 1rem; color: oklch(28% 0.006 80); line-height: 1.375; } .ds-article-card__footer { display: flex; align-items: flex-end; justify-content: space-between; } .ds-article-card__meta-row { display: flex; align-items: center; gap: 12px; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(50% 0.005 80); } .ds-article-card__rule { display: inline-block; width: 2rem; height: 1px; background: oklch(88% 0.005 80); } .ds-article-card__actions { display: flex; gap: 8px; } .ds-feedback-btn { width: 36px; height: 36px; border-radius: 9999px; border: 1px solid oklch(88% 0.005 80); background: transparent; cursor: pointer; font-size: 1rem; display: grid; place-items: center; color: oklch(15% 0.008 80); } .ds-feedback-btn:hover { background: oklch(95% 0.006 80); }"
+    },
+    {
+      "name": "Plans Grid",
+      "kind": "card",
+      "refersTo": "plans-cell",
+      "description": "Two-column comparison panel. Gap-as-divider pattern: no explicit borders, 1px gap on rule-colored container.",
+      "html": "<div class=\"ds-plans\"><div class=\"ds-plans__cell\"><div class=\"ds-plans__header\"><p class=\"ds-plans__name\">Sohzo</p><p class=\"ds-plans__badge\">Free</p></div><p class=\"ds-plans__tagline\">The whole core ritual. Forever.</p><ul class=\"ds-plans__list\"><li class=\"ds-plans__item\"><span class=\"ds-plans__idx\">01</span>One piece a day</li><li class=\"ds-plans__item\"><span class=\"ds-plans__idx\">02</span>Both Explore and Related modes</li><li class=\"ds-plans__item\"><span class=\"ds-plans__idx\">03</span>Curiosity constellation</li></ul></div><div class=\"ds-plans__cell ds-plans__cell--plus\"><div class=\"ds-plans__header\"><p class=\"ds-plans__name\">Sohzo Plus</p><p class=\"ds-plans__badge\">Coming</p></div><p class=\"ds-plans__tagline\">For the curious who want a little more.</p><ul class=\"ds-plans__list\"><li class=\"ds-plans__item\"><span class=\"ds-plans__idx\">01</span>Multiple pieces, when you want them</li><li class=\"ds-plans__item\"><span class=\"ds-plans__idx\">02</span>Deeper interest analytics</li><li class=\"ds-plans__item\"><span class=\"ds-plans__idx\">03</span>Custom learning paths</li></ul></div></div>",
+      "css": ".ds-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: oklch(88% 0.005 80); font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif; } .ds-plans__cell { background: oklch(97.5% 0.005 80); padding: 3rem; } .ds-plans__cell--plus { background: linear-gradient(155deg, oklch(95% 0.006 80) 0%, oklch(95% 0.006 80) 50%, oklch(92% 0.03 80) 100%); } .ds-plans__header { display: flex; align-items: baseline; justify-content: space-between; } .ds-plans__name { font-size: clamp(1.75rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.04; letter-spacing: -0.02em; color: oklch(15% 0.008 80); } .ds-plans__badge { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.875rem; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(50% 0.005 80); } .ds-plans__tagline { margin-top: 1rem; font-style: italic; color: oklch(28% 0.006 80); } .ds-plans__list { margin-top: 2.5rem; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; } .ds-plans__item { display: flex; align-items: baseline; gap: 12px; font-size: 1rem; color: oklch(28% 0.006 80); } .ds-plans__idx { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.625rem; letter-spacing: 0.18em; color: oklch(72% 0.004 80); flex-shrink: 0; }"
+    },
+    {
+      "name": "Worlds List Row",
+      "kind": "custom",
+      "description": "A single row in the twelve-worlds table. Border-bottom rule, no card. Category accent appears only on the index and hover underline.",
+      "html": "<div class=\"ds-world-row\"><span class=\"ds-world-row__idx\" style=\"color: #c0436b\">01</span><div class=\"ds-world-row__name-col\"><h3 class=\"ds-world-row__name\">Arts</h3><span class=\"ds-world-row__underline\" style=\"background-color: #c0436b\"></span></div><p class=\"ds-world-row__whisper\">Painters, photographers, the look of looking.</p><ul class=\"ds-world-row__samples\"><li class=\"ds-world-row__sample\"><span class=\"ds-world-row__sample-idx\">01</span>The unfinished sketches of Leonardo</li><li class=\"ds-world-row__sample\"><span class=\"ds-world-row__sample-idx\">02</span>How Hilma af Klint hid her own genius</li></ul></div>",
+      "css": ".ds-world-row { display: grid; grid-template-columns: 2.5rem 1fr 1fr 1fr; gap: 2rem; align-items: baseline; padding: 2.25rem 0; border-bottom: 1px solid oklch(88% 0.005 80); font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif; } .ds-world-row__idx { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.75rem; letter-spacing: 0.18em; } .ds-world-row__name-col { display: flex; flex-direction: column; gap: 12px; } .ds-world-row__name { font-size: clamp(1.75rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.04; letter-spacing: -0.02em; color: oklch(15% 0.008 80); margin: 0; } .ds-world-row__underline { display: block; height: 2px; width: 0.75rem; transition: width 700ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-world-row:hover .ds-world-row__underline { width: 3.5rem; } .ds-world-row__whisper { font-style: italic; color: oklch(28% 0.006 80); font-size: 1rem; line-height: 1.375; } .ds-world-row__samples { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; } .ds-world-row__sample { display: flex; align-items: baseline; gap: 8px; font-size: 0.8125rem; color: oklch(28% 0.006 80); opacity: 0.55; } .ds-world-row:hover .ds-world-row__sample { opacity: 1; } .ds-world-row__sample-idx { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.625rem; letter-spacing: 0.18em; color: oklch(72% 0.004 80); }"
+    },
+    {
+      "name": "Spectrum Bar",
+      "kind": "custom",
+      "description": "Twelve equal strips of category colors. The signature graphic device. Height varies by context (2–4px).",
+      "html": "<div class=\"ds-spectrum\" role=\"img\" aria-label=\"Twelve category accents\"><span style=\"background:#c0436b;flex:1\"></span><span style=\"background:#d18345;flex:1\"></span><span style=\"background:#3f8a6c;flex:1\"></span><span style=\"background:#dc6f5b;flex:1\"></span><span style=\"background:#7a5a3a;flex:1\"></span><span style=\"background:#5a9c4c;flex:1\"></span><span style=\"background:#4d3a8c;flex:1\"></span><span style=\"background:#b94a3a;flex:1\"></span><span style=\"background:#7d4ba1;flex:1\"></span><span style=\"background:#3f6cc7;flex:1\"></span><span style=\"background:#3a8e8a;flex:1\"></span><span style=\"background:#3a78d6;flex:1\"></span></div>",
+      "css": ".ds-spectrum { display: flex; width: 100%; height: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Curated Correspondent",
+    "overview": "Sohzo's visual system is built around one idea: a trusted editor who sends you one perfect letter every morning. Not a feed. Not a recommendation engine. A single, considered act of curation. The interface feels like opening a well-designed envelope — warm paper, unhurried typography, no competing signals. It is calm at the moment of peak attention.\n\nThe system uses Satoshi (geometric black, optically tight) paired with a monospaced label utility. The palette is a single warm-tinted neutral scale — never pure white or black — punctuated by twelve category accents that appear only in domain-specific contexts. Those accents are not UI colors; they are content identifiers. The layout is structured by 12-column grids and hairline rules, not by cards or shadows.\n\nThis system explicitly rejects: the gamified learning platform (streaks, badges, dopamine loops), the recommendation-engine feed (infinite scroll, recency-biased, noise), and the social comparison interface (likes, shares, public tallies).",
+    "keyCharacteristics": [
+      "Warm-tinted neutrals only: no pure white or black anywhere",
+      "Typography does the structural work — no cards, no UI shadows",
+      "Category accents appear in content contexts only, never as UI affordances",
+      "Numbered section labels (mono, uppercase, tracked) create editorial rhythm",
+      "One CTA pattern: text link at display-3 scale + arrow →, never a button",
+      "Motion is orchestrated on entrance, then completely still"
+    ],
+    "rules": [
+      { "name": "The Domain Colour Rule", "body": "Category accents are content-level identifiers, not UI affordances. They never appear on buttons, form controls, or navigational elements.", "section": "colors" },
+      { "name": "The One World Rule", "body": "Never mix two category accents on the same surface. The Spectrum bar is the one deliberate exception.", "section": "colors" },
+      { "name": "The Tight Crown Rule", "body": "Display headlines use leading below 1.0 (0.92 for display-1, 0.96 for display-2). Never add extra line-height to fix perceived tightness.", "section": "typography" },
+      { "name": "The Light Italic Rule", "body": "Emphasis in headlines is set in Satoshi Light Italic (font-weight: 300; font-style: italic), not bold. A drop in weight, not a shout.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Shadows appear on exactly one component — the article card — and nowhere else. Any new component that reaches for box-shadow first is wrong.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use oklch() for every color value. The palette is OKLCH-native.",
+      "Do keep body text between 65–75 characters per line.",
+      "Do use cubic-bezier(0.22, 1, 0.36, 1) as the easing function for all transitions.",
+      "Do tint every neutral toward hue 80° with chroma between 0.004 and 0.010.",
+      "Do structure sections with the numbered label convention (№ nn — Section name).",
+      "Do use hairline rules (1px, rule color) as the primary structural divider.",
+      "Do set italic emphasis in headlines as font-weight: 300; font-style: italic (Light Italic).",
+      "Do let category accents appear only where they carry semantic domain meaning."
+    ],
+    "donts": [
+      "Don't use a <button> element for the primary CTA. Always a text-link at display-3 scale.",
+      "Don't introduce cards with border-left / border-right accent stripes.",
+      "Don't add gradient text (background-clip: text) to any element.",
+      "Don't use glassmorphism (backdrop-filter blur + translucent panels).",
+      "Don't add UI shadows to buttons, nav, inputs, or panels.",
+      "Don't use a category accent as a button color, link color, or focus ring.",
+      "Don't add streaks, badges, progress bars, or any gamification UI pattern.",
+      "Don't add infinite-scroll patterns, feeds, or recommendation carousels.",
+      "Don't show engagement metrics, share counts, or any social comparison signal.",
+      "Don't use #000000 or #ffffff directly.",
+      "Don't add leading below 0.9 on any non-display element, or above 1.5 on any element."
+    ]
+  }
+}
