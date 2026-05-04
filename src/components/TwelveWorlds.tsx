@@ -1,21 +1,29 @@
-import { useState } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { useRef } from 'react';
+import { motion, useInView, useReducedMotion } from 'motion/react';
 import { categories } from '../data/categories';
+import { useState } from 'react';
 
 export function TwelveWorlds() {
   const reduce = useReducedMotion();
   const [hover, setHover] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { once: true, amount: 0.08 });
 
   return (
-    <section id="twelve-worlds" className="pt-32 md:pt-48 pb-24 md:pb-32">
-      <div className="px-6 md:px-10 mb-16 md:mb-20 grid grid-cols-1 md:grid-cols-12 gap-6">
-        <p className="label text-[color:var(--color-ink-muted)] md:col-span-2">№ 03 — Atlas</p>
-        <h2 className="display-2 md:col-span-9 text-balance">
+    <section ref={sectionRef} id="twelve-worlds" className="pt-32 md:pt-48 pb-24 md:pb-32">
+      <motion.div
+        className="px-6 md:px-10 mb-16 md:mb-20 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-x-8"
+        initial={reduce ? false : { opacity: 0, y: 10 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <p className="label text-[color:var(--color-ink-muted)] md:col-span-1">№ 03 — Atlas</p>
+        <h2 className="display-2 md:col-span-9 md:col-start-2 text-balance">
           Twelve worlds.
           <br />
           One a day, in turn.
         </h2>
-      </div>
+      </motion.div>
 
       <div role="list" className="border-y border-[color:var(--color-rule)]">
         {categories.map((c, idx) => {
@@ -26,10 +34,17 @@ export function TwelveWorlds() {
               role="listitem"
               onMouseEnter={() => setHover(idx)}
               onMouseLeave={() => setHover(null)}
-              animate={{
-                backgroundColor: isHover ? `${c.hex}0c` : 'rgba(0,0,0,0)',
+              initial={reduce ? false : { opacity: 0, y: 6 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.5,
+                delay: inView ? 0.15 + idx * 0.04 : 0,
+                ease: [0.22, 1, 0.36, 1],
               }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              style={{
+                backgroundColor: isHover ? `${c.hex}0c` : `${c.hex}00`,
+                transition: `background-color 500ms cubic-bezier(0.22, 1, 0.36, 1)`,
+              }}
               className="relative border-b border-[color:var(--color-rule)] last:border-b-0"
             >
               <div className="px-6 md:px-10 py-7 md:py-9 grid grid-cols-12 gap-x-4 md:gap-x-8 items-baseline">
@@ -48,14 +63,16 @@ export function TwelveWorlds() {
                     aria-hidden
                     className="block h-[2px] mt-3"
                     style={{
-                      width: isHover ? '3.5rem' : '0.75rem',
+                      width: '3.5rem',
                       backgroundColor: c.hex,
-                      transition: 'width 700ms cubic-bezier(0.22, 1, 0.36, 1)',
+                      transform: isHover ? 'scaleX(1)' : 'scaleX(0.214)',
+                      transformOrigin: 'left',
+                      transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)',
                     }}
                   />
                 </div>
 
-                <p className="hidden md:block md:col-span-3 italic text-[color:var(--color-ink-soft)] text-base lg:text-lg leading-snug">
+                <p className="hidden md:block md:col-span-3 italic text-[color:var(--color-ink)] text-lg leading-snug">
                   {c.whisper}
                 </p>
 
@@ -84,11 +101,16 @@ export function TwelveWorlds() {
         })}
       </div>
 
-      <div className="px-6 md:px-10 mt-12 md:mt-16 grid grid-cols-12 gap-6">
+      <motion.div
+        className="px-6 md:px-10 mt-12 md:mt-16 grid grid-cols-12 gap-6"
+        initial={reduce ? false : { opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.7, delay: 0.15 + categories.length * 0.04 + 0.1, ease: [0.22, 1, 0.36, 1] }}
+      >
         <p className="col-span-12 md:col-span-6 md:col-start-4 text-[color:var(--color-ink-muted)] text-sm leading-snug max-w-md italic">
           Topics shown are illustrative. The piece you receive is generated for you, in your reading time, in your mood.
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 }

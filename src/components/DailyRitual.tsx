@@ -102,13 +102,13 @@ export function DailyRitual() {
                 className="flex items-baseline gap-3 cursor-pointer group"
               >
                 <span
-                  className="font-mono text-[10px] tabular-nums tracking-widest"
+                  className="font-mono text-[10px] tabular-nums tracking-widest transition-colors duration-300"
                   style={{ color: idx === i ? c.hex : 'var(--color-ink-faint)' }}
                 >
                   {c.index}
                 </span>
                 <span
-                  className={`text-sm transition-colors ${idx === i ? 'font-medium' : ''}`}
+                  className={`text-sm transition-colors duration-300 ${idx === i ? 'font-medium' : ''}`}
                   style={{ color: idx === i ? 'var(--color-ink)' : 'var(--color-ink-muted)' }}
                 >
                   {c.name}

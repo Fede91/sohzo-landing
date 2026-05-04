@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { motion, useInView, useReducedMotion } from 'motion/react';
 import { track } from '../lib/analytics';
 
 const APP_STORE_URL = 'https://apps.apple.com/app/sohzo/id0000000000';
@@ -20,19 +22,35 @@ const plus = [
 ];
 
 export function Plus() {
+  const ref = useRef<HTMLElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.15 });
+  const ctaInView = useInView(ctaRef, { once: true, amount: 0.5 });
+  const reduce = useReducedMotion();
+
   return (
-    <section id="plus" className="px-6 md:px-10 pt-32 md:pt-48 pb-24 md:pb-32">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16 md:mb-20">
+    <section ref={ref} id="plus" className="px-6 md:px-10 pt-32 md:pt-48 pb-24 md:pb-32">
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16 md:mb-20"
+        initial={reduce ? false : { opacity: 0, y: 10 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
         <p className="label text-[color:var(--color-ink-muted)] md:col-span-2">№ 06 — Plans</p>
         <h2 className="display-2 md:col-span-9 text-balance">
           Free, mostly.
           <br />
           More if you want it.
         </h2>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[color:var(--color-rule)]">
-        <div className="bg-[color:var(--color-paper)] p-8 md:p-12">
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-[color:var(--color-paper)] p-8 md:p-12"
+        >
           <div className="flex items-baseline justify-between">
             <p className="display-3">Sohzo</p>
             <p className="font-mono text-sm tracking-widest uppercase text-[color:var(--color-ink-muted)]">Free</p>
@@ -50,13 +68,16 @@ export function Plus() {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
           className="p-8 md:p-12 relative overflow-hidden"
           style={{
             background:
-              'linear-gradient(155deg, var(--color-paper-soft) 0%, var(--color-paper-soft) 50%, oklch(92% 0.03 80) 100%)',
+              'linear-gradient(155deg, var(--color-paper-soft) 0%, var(--color-paper-soft) 50%, var(--color-paper-warm) 100%)',
           }}
         >
           <div className="flex items-baseline justify-between">
@@ -76,10 +97,16 @@ export function Plus() {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="mt-20 md:mt-28 text-center">
+      <motion.div
+        ref={ctaRef}
+        className="mt-20 md:mt-28 text-center"
+        initial={reduce ? false : { opacity: 0, y: 16 }}
+        animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      >
         <p className="label text-[color:var(--color-ink-muted)] mb-6">№ 07 — Begin</p>
         <h3 className="display-2 text-balance">
           Make a habit of <em className="italic font-light">discovery.</em>
@@ -95,7 +122,7 @@ export function Plus() {
         <p className="mt-6 text-sm text-[color:var(--color-ink-muted)]">
           iPhone, iOS 16 and up. Android arriving later this year.
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 }

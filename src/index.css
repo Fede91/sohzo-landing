@@ -7,6 +7,9 @@
   font-style: normal;
   font-display: swap;
 }
+/* No Satoshi-LightItalic file is bundled; the browser synthesizes an oblique
+   from the Light face. This is intentional — the synthesized slant is subtle
+   and matches the "Light Italic Rule" effect described in DESIGN.md. */
 @font-face {
   font-family: 'Satoshi';
   src: url('/fonts/Satoshi-Regular.otf') format('opentype');
@@ -50,6 +53,7 @@
   /* Warm-tinted neutrals — never pure white or black */
   --color-paper: oklch(97.5% 0.005 80);
   --color-paper-soft: oklch(95% 0.006 80);
+  --color-paper-warm: oklch(92% 0.030 80);
   --color-ink: oklch(15% 0.008 80);
   --color-ink-soft: oklch(28% 0.006 80);
   --color-ink-muted: oklch(50% 0.005 80);
@@ -122,6 +126,20 @@
 
   .text-pretty {
     text-wrap: pretty;
+  }
+
+  /* Dark zone — inverted warm neutral scale for analytical/introspective sections */
+  .dark-zone {
+    --color-paper: oklch(11% 0.009 80);
+    --color-paper-soft: oklch(15.5% 0.010 80);
+    --color-paper-warm: oklch(19% 0.016 80);
+    --color-ink: oklch(96% 0.004 80);
+    --color-ink-soft: oklch(78% 0.004 80);
+    --color-ink-muted: oklch(56% 0.004 80);
+    --color-ink-faint: oklch(36% 0.005 80);
+    --color-rule: oklch(21% 0.008 80);
+    background: oklch(11% 0.009 80);
+    color: oklch(96% 0.004 80);
   }
 
   /* Display sizes — anti-flat scale, ratio ~1.4 */
